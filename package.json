@@ -1,0 +1,24 @@
+{
+  "name": "doctor",
+  "version": "1.0.0",
+  "description": "Find a doc app ",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manulangat1/node_express_findAdoc_react_context.git"
+  },
+  "keywords": [
+    "Node",
+    "express",
+    "redis-queur"
+  ],
+  "author": "Emmanuel Kipchirchir Langat",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/manulangat1/node_express_findAdoc_react_context/issues"
+  },
+  "homepage": "https://github.com/manulangat1/node_express_findAdoc_react_context#readme"
+}
