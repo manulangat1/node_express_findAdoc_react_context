@@ -63,3 +63,25 @@ exports.loadUser = async(req,res,next) => {
         })
     }
 }
+exports.logoutUser = async(req,res,next) => {
+    try{
+        console.log(req.user)
+
+        req.user.tokens.splice(0, req.user.tokens.length)
+        await req.user.save()
+        res.status(200).json({
+            message:'Success'
+        })
+        // req.user.tokens.splice(0,req.user.tokens.length)
+        // await req.user.save()
+        // res.status({
+        //     message:'success'
+        // })
+    } catch (err) {
+        console.log(`err:${err.message}`)
+        res.status(500).json({
+            success:false,
+            message:'Internal Server Error'
+        })
+    }
+}
