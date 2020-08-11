@@ -72,11 +72,6 @@ exports.logoutUser = async(req,res,next) => {
         res.status(200).json({
             message:'Success'
         })
-        // req.user.tokens.splice(0,req.user.tokens.length)
-        // await req.user.save()
-        // res.status({
-        //     message:'success'
-        // })
     } catch (err) {
         console.log(`err:${err.message}`)
         res.status(500).json({
