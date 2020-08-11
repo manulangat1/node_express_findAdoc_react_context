@@ -2,9 +2,13 @@ const express = require('express')
 const dotenv = require('dotenv')
 const morgan = require('morgan')
 const colors = require('colors')
+const connectDB = require('./config/db')
 
-const app = express()
 dotenv.config({path:'./config/config.env'})
+
+connectDB()
+const app = express()
+
 
 if (process.env.NODE_ENV === "development"){
     app.use(morgan('dev'))
