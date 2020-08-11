@@ -1,12 +1,18 @@
 const mongoose = require('mongoose')
 const User = require('../models/User')
-
+const { sendEmail } = require('../utils/emails')
 
 exports.registerUser = async(req,res,next) => {
     try{
         const { email,username,password,isAdmin } = req.body 
         const user = await User.create(req.body)
         const token = await user.generateAuthToken()
+        const mail = {
+            to:`${user.email}`,
+            subject:"hey",
+            text:"Hey uo"
+        }
+        sendEmail(mail)
         res.status(201).json({
             success:true,
             data:user,
