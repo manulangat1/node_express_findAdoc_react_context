@@ -5,7 +5,7 @@ const isAdmin = require('../middlewares/isAdmin')
 
 const router = express.Router()
 
-router.route('/').get(auth,getDoctor).post(isAdmin,postDoctor)
+router.route('/').get(getDoctor).post(isAdmin,postDoctor)
 router.route('/:location&:charges').get(filterDoctor)
 
 module.exports = router 
