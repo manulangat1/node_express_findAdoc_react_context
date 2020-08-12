@@ -40,3 +40,26 @@ exports.postDoctor = async(req,res,next) => {
         })
     }
 }
+
+exports.filterDoctor = async(req,res,next) => {
+    try{
+        const location= req.params.location
+        const charges = req.params.charges
+
+        const doctors = await Doctor.find({location,charges})
+        if (doctors){
+            res.status(200).json({
+                success:true,
+                count:doctors.length,
+                data:doctors
+            })
+        }
+
+    } catch (err){
+        console.log(`err:${err.message}`)
+        res.status(500).json({
+            success:false,
+            message:'Internal Server Error'
+        })
+    }
+}
