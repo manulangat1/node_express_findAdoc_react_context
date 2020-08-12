@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
 const Doctor = require('../models/Doctor')
 
+
+
 exports.getDoctor = async(req,res,next) => {
     try{
         const doctors = await Doctor.find()
@@ -8,6 +10,27 @@ exports.getDoctor = async(req,res,next) => {
             success:true,
             count:doctors.length,
             data:doctors
+        })
+    } catch (err){
+        console.log(`err:${err.message}`)
+        res.status(500).json({
+            success:false,
+            message:'Internal Server Error'
+        })
+    }
+}
+
+exports.postDoctor = async(req,res,next) => {
+    try{
+        const doctor = new Doctor({
+            user:req.user,
+            location:req.body.location,
+            charges:req.body.charges
+        }) 
+        const doc = await doctor.save()
+        res.status(201).json({
+            success:true,
+            data:doctor
         })
     } catch (err){
         console.log(`err:${err.message}`)
