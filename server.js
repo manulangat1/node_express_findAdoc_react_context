@@ -7,14 +7,19 @@ const connectDB = require('./config/db')
 dotenv.config({path:'./config/config.env'})
 
 connectDB()
+// import routes 
+const User = require('./routes/User')
+
+
 const app = express()
-
-
+//body parser
+app.use(express.json())
 if (process.env.NODE_ENV === "development"){
     app.use(morgan('dev'))
 }
 
 app.get('/',(req,res) => res.send("Hello"))
+app.use('/auth/v1/',User)
 
 const PORT = process.env.PORT
 
