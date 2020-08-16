@@ -9,7 +9,7 @@ dotenv.config({path:'./config/config.env'})
 connectDB()
 // import routes 
 const User = require('./routes/User')
-
+const Doctor = require('./routes/Doctor')
 
 const app = express()
 //body parser
@@ -20,6 +20,7 @@ if (process.env.NODE_ENV === "development"){
 
 app.get('/',(req,res) => res.send("Hello"))
 app.use('/auth/v1/',User)
+app.use('/api/v1/doctors/',Doctor)
 
 const PORT = process.env.PORT
 
